@@ -19,7 +19,7 @@
     <br><br>
 </div>
 
-This web application aims to assist individuals in need by providing a 3D map interface to navigate to the nearest food banks and shelters in Toronto. Leveraging the MERN stack (MongoDB, Express.js, React, Node.js) and incorporating the Esri ArcGIS API for JavaScript, our app offers an immersive and user-friendly experience for locating essential services.
+This web application aims to assist individuals in need by providing a 3D map interface to navigate to the nearest food banks and shelters in Toronto. Leveraging the MERN stack (MongoDB, Express.js, React, Node.js), our app offers an immersive and user-friendly experience for locating essential services.
 
 
 ## Features

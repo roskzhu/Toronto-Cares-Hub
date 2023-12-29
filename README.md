@@ -1,10 +1,10 @@
 <div align="center">
     <div id="user-content-toc">
       <ul>
-          <summary><h1 style="display: inline-block; margin-bottom:0px">3D Homeless Shelter Navigation</h1></summary>
+          <summary><h1 style="display: inline-block; margin-bottom:0px">Homeless Shelter Navigation</h1></summary>
       </ul>
     </div>
-    <h3>Your AI Ally for Companionship and Learning – Where Chat Meets Knowledge</h3>
+    <h3></h3>
 <!--     <h4><i>xxx</i></h4> -->
        <br>
     <img src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white"/>
@@ -15,7 +15,7 @@
 <!--     <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white"/> -->
     <!-- <img src="https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white"/> -->
     <!-- <img src="https://img.shields.io/badge/redux-%23316192.svg?style=for-the-badge&logo=redux&logoColor=white"/> -->
-    <img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white"/>
+    <!-- <img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white"/> -->
     <br><br>
 </div>
 
@@ -39,6 +39,11 @@ Before you begin, ensure you have met the following requirements:
 
 ## Architecture Overview
 to be added
+- metrics are from city of toronto api
+- shelter information is scraped from city of toronto shelters page, then stored in a mongo db
+- google maps api for map visualization (carousel), locations are searched with algolia
+- redis for statemanagement
+- docker/firebase?
 
 ## Getting Started
 
@@ -46,18 +51,14 @@ to be added
 
 _(127.0.0.1:5000 by default)_
 
-1. `cd backend`
-2. `python3 -m venv venv`
-3. `source venv/bin/activate` (MacOS)
-4. `venv\Scripts\activate` (Windows Powershell)
-5. `pip install -r requirements.txt`
-6. `node server.js`
+1. `cd server`
+2. `node server.js`
 
 ### Starting the app
 
 _(localhost:3000 by default)_
 
-1. `cd frontend`
+1. `cd client`
 2. `npm install`
 3. `npm start`
 

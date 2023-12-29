@@ -1,6 +1,7 @@
 // MapComponent.tsx
 import React from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import '../styles/Map.css';
 
 interface Location {
   lat: number;
@@ -20,8 +21,8 @@ const MapComponent: React.FC<MapComponentProps> = ({ locations }) => {
   ];
 
   const mapContainerStyle: React.CSSProperties = {
-    width: '100%',
-    height: '400px',
+    width: '80%',
+    height: '60vh',
   };
 
   const center: google.maps.LatLngLiteral = { lat: 37.7749, lng: -122.4194 }; // Set the initial center of the map
@@ -36,19 +37,21 @@ const MapComponent: React.FC<MapComponentProps> = ({ locations }) => {
   }
 
   return (
-    <LoadScript googleMapsApiKey={apiKey}>
-      <GoogleMap mapContainerStyle={mapContainerStyle} center={center} zoom={12}>
-        {/* Display provided locations */}
-        {locations.map((location, index) => (
-          <Marker key={index} position={location} />
-        ))}
+    <div className="map-container">
+      <LoadScript googleMapsApiKey={apiKey}>
+        <GoogleMap mapContainerStyle={mapContainerStyle} center={center} zoom={12}>
+          {/* Display provided locations */}
+          {locations.map((location, index) => (
+            <Marker key={index} position={location} />
+          ))}
 
-        {/* Display temporary locations for testing */}
-        {temporaryLocations.map((location, index) => (
-          <Marker key={`temp-${index}`} position={location} label={`Temp ${index + 1}`} />
-        ))}
-      </GoogleMap>
-    </LoadScript>
+          {/* Display temporary locations for testing */}
+          {temporaryLocations.map((location, index) => (
+            <Marker key={`temp-${index}`} position={location} label={`Temp ${index + 1}`} />
+          ))}
+        </GoogleMap>
+      </LoadScript>
+    </div>
   );
 };
 

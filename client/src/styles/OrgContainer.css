@@ -1,0 +1,7 @@
+.org-container {
+  position: absolute;
+  width: 20%;
+  height: 60%;
+  overflow: hidden;
+  overflow-y: auto;
+}

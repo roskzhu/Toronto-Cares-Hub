@@ -3,11 +3,11 @@ import '../styles/Nav.css';
 
 const Nav: React.FC = () => {
   return (
-    <nav>
+    <nav id="nav">
       <ul className="navbar">
-        <li>TORONTO</li>
-        <li>About</li>
-        <li>Contact</li>
+        <li>TORONTO <br/> HOMELESS SHELTER METRICS</li>
+        {/* <li>About</li>
+        <li>Contact</li> */}
       </ul>
     </nav>
   );

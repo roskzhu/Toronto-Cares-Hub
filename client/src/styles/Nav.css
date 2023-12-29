@@ -1,0 +1,35 @@
+/* FILEPATH: /c:/Users/coldf/Documents/my_projects/Toronto-Shelter-Metrics-Map/client/src/styles/Nav.css */
+
+.navbar {
+  background-color: #090909;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.navbar-brand {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+.navbar {
+  list-style-type: none;
+  display: flex;
+}
+
+.nav-item {
+  margin-right: 10px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  color: #666;
+}

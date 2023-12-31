@@ -1,6 +1,20 @@
 // MapComponent.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import algoliasearch from "algoliasearch/lite";
+// import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-dom';
+import {
+  InstantSearch,
+  SearchBox, 
+  Hits,
+  InfiniteHits,
+  Pagination,
+  Highlight,
+  ClearRefinements,
+  RefinementList,
+  Configure,
+  connectSearchBox,
+} from "react-instantsearch-dom";
 import '../styles/Map.css';
 
 interface Location {
@@ -12,7 +26,14 @@ interface MapComponentProps {
   locations: Location[];
 }
 
+const searchClient = algoliasearch(
+  "YOUR_ALGOLIA_APP_ID",
+  "YOUR_ALGOLIA_API_KEY"
+);
+
 const MapComponent: React.FC<MapComponentProps> = ({ locations }) => {
+  const [searchQuery, setSearchQuery] = useState<string>('');
+
   // Temporary locations for testing
   const temporaryLocations: Location[] = [
     { lat: 37.785, lng: -122.4064 },
@@ -38,6 +59,18 @@ const MapComponent: React.FC<MapComponentProps> = ({ locations }) => {
 
   return (
     <div className="map-container">
+      <InstantSearch
+        appId="YOUR_ALGOLIA_APP_ID"
+        apiKey="YOUR_ALGOLIA_API_KEY"
+        indexName="your_algolia_index_name"
+      >
+        <SearchBox
+          translations={{ placeholder: 'Search for organizations...' }}
+          onChange={(event) => setSearchQuery(event.currentTarget.value)}
+        />
+        <Hits hitComponent={({ hit }) => <Marker position={{ lat: hit.lat, lng: hit.lng }} />} />
+
+
       <LoadScript googleMapsApiKey={apiKey}>
         <GoogleMap mapContainerStyle={mapContainerStyle} center={center} zoom={12}>
           {/* Display provided locations */}
@@ -51,6 +84,8 @@ const MapComponent: React.FC<MapComponentProps> = ({ locations }) => {
           ))}
         </GoogleMap>
       </LoadScript>
+
+      </InstantSearch>
     </div>
   );
 };

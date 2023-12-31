@@ -7,6 +7,11 @@ const PORT = process.env.PORT || 5000;
 
 const https = require('https');
 
+// Algolia configuration
+const algoliaClient = algoliasearch('YOUR_ALGOLIA_APP_ID', 'YOUR_ALGOLIA_API_KEY');
+const algoliaIndex = algoliaClient.initIndex('your_algolia_index_name');
+
+
 // MongoDB connection
 mongoose.connect('mongodb://localhost:27017/scrapedData', {
   useNewUrlParser: true,
@@ -97,6 +102,43 @@ app.get('/api/organizations', async (req, res) => {
     res.json(organizations);
   } catch (error) {
     console.error('Error fetching organizations:', error.message);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// Algolia endpoints
+
+// Define a method to sync MongoDB address data with Algolia
+const syncDataWithAlgolia = async () => {
+  try {
+    // Retrieve data from MongoDB
+    const organizations = await Organization.find();
+
+    // Prepare data for Algolia
+    const algoliaObjects = organizations.map(org => ({
+      objectID: org._id.toString(), // Use a unique identifier
+      name: org.name,
+      address: org.address,
+      hours: org.hours,
+      clientGroup: org.clientGroup,
+    }));
+
+    // Save data to Algolia
+    await algoliaIndex.saveObjects(algoliaObjects);
+
+    console.log('Sync successful!');
+  } catch (error) {
+    console.error('Error syncing data with Algolia:', error.message);
+  }
+};
+
+// Route to trigger syncing
+app.post('/api/syncAlgolia', async (req, res) => {
+  try {
+    await syncDataWithAlgolia();
+    res.json({ message: 'Sync successful!' });
+  } catch (error) {
+    console.error('Error syncing data with Algolia:', error.message);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });

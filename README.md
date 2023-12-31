@@ -34,8 +34,7 @@ Enable users to plan and visualize the most efficient route to their nearest foo
 ## Prerequisites
 Before you begin, ensure you have met the following requirements:
 
-- [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed for the frontend.
-- [Python](https://www.python.org/) and [pip](https://pip.pypa.io/en/stable/) installed for the backend.
+- [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
 
 ## Architecture Overview
 to be added

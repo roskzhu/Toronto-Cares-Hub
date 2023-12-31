@@ -1,90 +1,156 @@
-// MapComponent.tsx
-import React, { useState } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
-import algoliasearch from "algoliasearch/lite";
-// import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-dom';
-import {
-  InstantSearch,
-  SearchBox, 
-  Hits,
-  InfiniteHits,
-  Pagination,
-  Highlight,
-  ClearRefinements,
-  RefinementList,
-  Configure,
-  connectSearchBox,
-} from "react-instantsearch-dom";
+import { InstantSearch, connectSearchBox, InfiniteHits } from 'react-instantsearch-dom';
 import '../styles/Map.css';
+import algoliasearch from 'algoliasearch/lite';
+import Geocode from "react-geocode";
+import PropTypes from "prop-types";
 
+// map constants
 interface Location {
   lat: number;
   lng: number;
 }
 
-interface MapComponentProps {
-  locations: Location[];
+interface Organization {
+  objectID: string;
+  name: string;
+  address: string;
+  hours: string;
+  clientGroup: string;
+  lat: number; // Add lat and lng to the Organization interface
+  lng: number;
 }
 
-const searchClient = algoliasearch(
-  "YOUR_ALGOLIA_APP_ID",
-  "YOUR_ALGOLIA_API_KEY"
+interface MapComponentProps {
+  organizations: Organization[]; // Replace with your data structure
+}
+
+// search box constants
+const searchClient = algoliasearch('AU3O59CQBC', 'ea3d508d33ab097406ca457d7741a0cf');
+
+interface SearchBoxProps {
+  currentRefinement: string;
+  isSearchStalled: boolean;
+  refine: (value: string) => void;
+}
+
+const SearchBox: React.FC<SearchBoxProps> = ({ currentRefinement, isSearchStalled, refine }) => (
+  <form noValidate action="" role="search">
+    <input
+      className="searchBox"
+      placeholder="Search for a shelter..."
+      type="search"
+      value={currentRefinement}
+      onChange={(event: ChangeEvent<HTMLInputElement>) => refine(event.currentTarget.value)}
+    />
+    <button className="resetQuery" onClick={() => refine("")}>
+      Reset query
+    </button>
+    {isSearchStalled ? "My search is stalled" : ""}
+  </form>
 );
 
-const MapComponent: React.FC<MapComponentProps> = ({ locations }) => {
-  const [searchQuery, setSearchQuery] = useState<string>('');
+const CustomSearchBox = connectSearchBox(SearchBox);
 
-  // Temporary locations for testing
-  const temporaryLocations: Location[] = [
-    { lat: 37.785, lng: -122.4064 },
-    { lat: 37.777, lng: -122.3994 },
-    // Add more temporary locations as needed
-  ];
+// Geocode.setApiKey('YOUR_GOOGLE_GEOCODING_API_KEY'); // Replace with your API key
+
+// Geocode.setLanguage("en");
+
+// Geocode.setLocationType("ROOFTOP");
+
+// Geocode.enableDebug();
+
+const MapComponent: React.FC<MapComponentProps> = ({ organizations }) => {
+  const [searchQuery, setSearchQuery] = React.useState<string>('');
+  const [items, setItems] = useState([]);
+  const [address, setAddress] = useState("Please select a location");
+  const [shelterName, setShelterName] = useState("");
+  const [link, setLink] = useState("");
+  const [lat, setLat] = useState(0);
+  const [lng, setLng] = useState(0);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/comments"
+      );
+      const data = await response.json();
+      setItems(data);
+    };
+    fetchData();
+    console.log(items);
+  }, []);
+
+  const changeLocationHeader = (address: string, shelterName: string, link: string) => {
+    Geocode.fromAddress(address).then((response) => {
+      const { lat, lng } = response.results[0].geometry.location;
+      setLat(lat);
+      setLng(lng);
+      setAddress(address);
+      setShelterName(shelterName);
+      setLink(link);
+    });
+    console.log(link);
+    console.log(lat, lng);
+    console.log(address);
+  };
+
+  function Hit(props: { hit: any }) {
+    return (
+      <div className="infoCardContainer" id="like-scroll">
+        {/* <InfoCard
+          key={props.hit.objectID}
+          shelterName={props.hit.FACILITY_NAME}
+          shelterType={props.hit.SECTOR}
+          shelterOccupancy={props.hit.OCCUPANCY}
+          shelterCapacity={props.hit.CAPACITY}
+          onClick={() => changeLocationHeader(props.hit.SHELTER_ADDRESS, props.hit.FACILITY_NAME, props.hit.URL)}
+        /> */}
+      </div>
+    );
+  }
+
+  Hit.propTypes = {
+    hit: PropTypes.object.isRequired,
+  };
 
   const mapContainerStyle: React.CSSProperties = {
     width: '80%',
     height: '60vh',
   };
 
-  const center: google.maps.LatLngLiteral = { lat: 37.7749, lng: -122.4194 }; // Set the initial center of the map
+  const center: google.maps.LatLngLiteral = { lat: 37.7749, lng: -122.4194 };
 
-  // Check if the environment variable is defined
   const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
-  console.log('API Key:', apiKey);  // for debugging 
 
   if (!apiKey) {
     console.error('Google Maps API key is not defined. Set REACT_APP_GOOGLE_MAPS_API_KEY in your environment.');
-    return null; // or render an error message
+    return null;
   }
 
   return (
     <div className="map-container">
-      <InstantSearch
-        appId="YOUR_ALGOLIA_APP_ID"
-        apiKey="YOUR_ALGOLIA_API_KEY"
-        indexName="your_algolia_index_name"
-      >
-        <SearchBox
-          translations={{ placeholder: 'Search for organizations...' }}
-          onChange={(event) => setSearchQuery(event.currentTarget.value)}
-        />
-        <Hits hitComponent={({ hit }) => <Marker position={{ lat: hit.lat, lng: hit.lng }} />} />
+      <InstantSearch 
+          searchClient={searchClient} 
+          indexName="instant_search">
+        <CustomSearchBox/>
+          <div className="infoCardContainer" id="like-scroll">
+            <InfiniteHits hitComponent={Hit} />
+          </div>
 
-
-      <LoadScript googleMapsApiKey={apiKey}>
-        <GoogleMap mapContainerStyle={mapContainerStyle} center={center} zoom={12}>
-          {/* Display provided locations */}
-          {locations.map((location, index) => (
-            <Marker key={index} position={location} />
-          ))}
-
-          {/* Display temporary locations for testing */}
-          {temporaryLocations.map((location, index) => (
-            <Marker key={`temp-${index}`} position={location} label={`Temp ${index + 1}`} />
-          ))}
-        </GoogleMap>
-      </LoadScript>
-
+          <LoadScript googleMapsApiKey={apiKey}>
+            <GoogleMap mapContainerStyle={mapContainerStyle} center={center} zoom={12}>
+              {organizations
+                .filter((organization) =>
+                  organization.name.toLowerCase().includes(searchQuery.toLowerCase())
+                )
+                .map((organization, index) => (
+                  <Marker key={index} position={{ lat: organization.lat, lng: organization.lng }} />
+                ))}
+            </GoogleMap>
+          </LoadScript>
+        {/* </CustomSearchBox> */}
       </InstantSearch>
     </div>
   );

@@ -64,6 +64,5 @@ _(localhost:3000 by default)_
 2. `npm install`
 3. `npm start`
 
-![image](https://github.com/roskzhu/Toronto-Shelter-Metrics-Map/assets/110139243/0090a1f8-4c2c-4e01-b78a-5ab5e0194d54)
 ![image](https://github.com/roskzhu/Toronto-Shelter-Metrics-Map/assets/110139243/f058e10a-87c5-4bdc-a258-7f6d9fbd8002)
-
+![image](https://github.com/roskzhu/Toronto-Shelter-Metrics-Map/assets/110139243/0090a1f8-4c2c-4e01-b78a-5ab5e0194d54)

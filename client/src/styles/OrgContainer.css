@@ -5,3 +5,21 @@
   overflow: hidden;
   overflow-y: auto;
 }
+
+/* Hide scrollbar for webkit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 0.5em; 
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: grey;
+}
+
+/* Hide scrollbar for Firefox */
+.scrollbar-hidden {
+  scrollbar-width: thin;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}

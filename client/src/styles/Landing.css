@@ -17,3 +17,7 @@
   margin: 0;
   padding: 20px;
 }
+
+.landing-bg {
+  /* background: url('/client/public/imgs/toronto.png') center center/cover no-repeat; */
+}

@@ -4,7 +4,7 @@
           <summary><h1 style="display: inline-block; margin-bottom:0px">Homeless Shelter Navigation</h1></summary>
       </ul>
     </div>
-    <h3></h3>
+    <h3>Navigating Compassion: Mapping Toronto's Shelters for a Sheltered Tomorrow</h3>
 <!--     <h4><i>xxx</i></h4> -->
        <br>
     <img src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white"/>
@@ -22,7 +22,7 @@
 ![image](https://github.com/roskzhu/Toronto-Shelter-Metrics-Map/assets/110139243/c1afc1ab-6dd8-4c86-8196-64de422ce22a)
 
 
-This web application aims to assist individuals in need by providing a 3D map interface to navigate to the nearest food banks and shelters in Toronto. Leveraging the MERN stack (MongoDB, Express.js, React, Node.js), our app offers an immersive and user-friendly experience for locating essential services.
+This web application aims to assist individuals in need by providing an interactive map interface to navigate to the nearest food banks and shelters in Toronto. Leveraging the MERN stack (MongoDB, Express.js, React, Node.js), our app offers an immersive and user-friendly experience for locating essential services.
 
 
 ## Features

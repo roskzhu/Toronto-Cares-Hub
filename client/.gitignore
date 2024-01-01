@@ -23,6 +23,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-/src/components/MapPin.tsx
 /src/components/pin.png
 public/index.html

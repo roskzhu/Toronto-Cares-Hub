@@ -26,11 +26,9 @@ This web application aims to assist individuals in need by providing an interact
 
 
 ## Features
-### 1. Interactive 3D Map
-Utilize a visually engaging 3D map to explore shelter and food bank locations.   
-### 2. Real-Time Data
+### 1. Real-Time Data
 Access up-to-date information on shelter capacities, services provided, and food bank availability.
-### 3. Route Planning
+### 2. Route Planning
 Enable users to plan and visualize the most efficient route to their nearest food bank or shelter.
 
 

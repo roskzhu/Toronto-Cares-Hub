@@ -19,6 +19,9 @@
     <br><br>
 </div>
 
+![image](https://github.com/roskzhu/Toronto-Shelter-Metrics-Map/assets/110139243/c1afc1ab-6dd8-4c86-8196-64de422ce22a)
+
+
 This web application aims to assist individuals in need by providing a 3D map interface to navigate to the nearest food banks and shelters in Toronto. Leveraging the MERN stack (MongoDB, Express.js, React, Node.js), our app offers an immersive and user-friendly experience for locating essential services.
 
 
@@ -60,4 +63,7 @@ _(localhost:3000 by default)_
 1. `cd client`
 2. `npm install`
 3. `npm start`
+
+![image](https://github.com/roskzhu/Toronto-Shelter-Metrics-Map/assets/110139243/0090a1f8-4c2c-4e01-b78a-5ab5e0194d54)
+![image](https://github.com/roskzhu/Toronto-Shelter-Metrics-Map/assets/110139243/f058e10a-87c5-4bdc-a258-7f6d9fbd8002)
 

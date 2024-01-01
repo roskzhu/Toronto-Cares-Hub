@@ -22,3 +22,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+/src/components/GoogleMap.tsx
+/src/components/MapPin.tsx
+/src/components/SearchBar.tsx
+/src/components/photography-pin.png
+/src/pages/Home.tsx

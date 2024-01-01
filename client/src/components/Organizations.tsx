@@ -7,9 +7,15 @@ interface Organization {
   address: string;
   hours: string;
   clientGroup: string;
+  lat: number;
+  lng: number;  
 }
 
-const OrganizationsWidget: React.FC = () => {
+type OrganizationsWidget = {
+  setCoordinates: React.Dispatch<React.SetStateAction<{ lat: number; lng: number }>>;
+};
+
+const OrganizationsWidget: React.FC<OrganizationsWidget> = ({ setCoordinates }) => {
   const [organizations, setOrganizations] = useState<Organization[]>([]);
 
   useEffect(() => {
@@ -26,15 +32,37 @@ const OrganizationsWidget: React.FC = () => {
     fetchData();
   }, []);
 
+  // Function to set the selected location on the map
+  const handleSetLocation = (lat: number, lng: number) => {
+    setCoordinates({ lat: lat, lng: lng } );
+    console.log("coordinates org changed", lat, lng);
+  };
+
   return (
-    <div>
+    <div className="">
       <ul>
         {organizations.map((org) => (
           <li key={org._id}>
-            <strong>Name:</strong> {org.name} <br />
-            <strong>Address:</strong> {org.address} <br />
-            <strong>Hours:</strong> {org.hours} <br />
-            <strong>Client Group:</strong> {org.clientGroup} <br />
+                       
+            <button className="border-2 rounded-md bg-slate-900" 
+                    onClick={() => handleSetLocation(org.lat, org.lng)}>
+              See Location
+            </button> 
+            <br/>
+            
+            
+            {Object.entries(org).map(([key, value], index, array) => (
+              // Skip the first(_id) and last(__v) entries
+              index !== 0 && index !== array.length - 1 && (
+                <React.Fragment key={key}>
+                  <strong className="uppercase">
+                    {key.charAt(0).toUpperCase() + key.slice(1)}:
+                  </strong> {" "}
+                  
+                  {value} <br />
+                </React.Fragment>
+              )
+            ))}
             <hr />
           </li>
         ))}

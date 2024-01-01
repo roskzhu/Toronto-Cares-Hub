@@ -1,22 +1,25 @@
-import React from 'react';
+import React from "react";
 import Organization from './Organizations'; 
 import '../styles/OrgContainer.css';
+
+type OrganizationContainerProps = {
+  setCoordinates: React.Dispatch<React.SetStateAction<{ lat: number; lng: number }>>;
+};
 
 const organizations = [
   { id: 1, name: 'Organization 1' },
 ];
 
-class OrganizationContainer extends React.Component {
-  render() {
-    return (
-      <div className="org-container">
-        <h2>DESTINATIONS</h2>
-        {organizations.map((org) => (
-          <Organization key={org.id}/>
-        ))}
-      </div>
-    );
-  }
-}
+// Converted to a functional component
+const OrganizationContainer: React.FC<OrganizationContainerProps> = ({ setCoordinates }) => {
+  return (
+    <div className="org-container bg-black text-white">
+      <h2 className="text-blue-400 font-bold">DESTINATIONS</h2>
+      {organizations.map((org) => (
+        <Organization key={org.id} setCoordinates={setCoordinates}/>
+      ))}
+    </div>
+  );
+};
 
 export default OrganizationContainer;

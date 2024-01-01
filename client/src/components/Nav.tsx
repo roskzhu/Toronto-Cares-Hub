@@ -5,9 +5,15 @@ const Nav: React.FC = () => {
   return (
     <nav id="nav">
       <ul className="navbar">
-        <li>TORONTO <br/> HOMELESS SHELTER METRICS</li>
-        {/* <li>About</li>
-        <li>Contact</li> */}
+        <li>
+          <span className="text-blue-400 text-3xl">
+            TORONTO 
+          </span>
+          <br/> 
+          <span className="tracking-widest text-sm">
+            HOMELESS SHELTER METRICS
+          </span>
+        </li>
       </ul>
     </nav>
   );

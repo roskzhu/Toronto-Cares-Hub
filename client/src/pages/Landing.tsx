@@ -31,7 +31,7 @@ const Landing: React.FC = () => {
 
       </div>
       
-        <img src="imgs/toronto.png" alt="Background Image" 
+        <img src="imgs/toronto.png" alt="bg" 
             className="opacity-70 w-2/3 justify-center mx-auto rounded-xl">
         </img>
 

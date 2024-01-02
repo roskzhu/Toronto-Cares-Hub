@@ -44,6 +44,7 @@ to be added
 - google maps api for map visualization (carousel), locations are searched with algolia
 - redis for statemanagement
 - docker/firebase?
+- more info: emergency services, foodbanks
 
 ## Getting Started
 

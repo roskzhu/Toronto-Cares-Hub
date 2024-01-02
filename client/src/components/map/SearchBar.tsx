@@ -22,12 +22,12 @@ const Searchbar: React.FC<SearchbarProps> = ({
             type="search"
             id="search-dropdown"
             className="block p-2.5 w-full z-20 text-sm text-white bg-white/15 rounded-sm transition-all"
-            placeholder="Search a location..."
+            placeholder="Search for a shelter . . ."
           />
           {shouldShowButton && (
             <button
               onClick={handleSearch}
-              className="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-white/60 rounded-r-lg
+              className="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-white/60 rounded-r-sm
                          hover:bg-white/40 focus:ring-4 focus:outline-none transition-all"
             >
               <svg

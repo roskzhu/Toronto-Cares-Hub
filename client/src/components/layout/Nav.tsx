@@ -9,7 +9,7 @@ const Nav: React.FC = () => {
         Toronto Cares Hub
       </p>
       <p>
-        <a href="https://github.com/roskzhu/Toronto-Shelter-Metrics-Map"
+        <a href="https://github.com/roskzhu/Toronto-Cares-Hub"
           className="hover:bg-white/20 p-2 rounded-md">
         GitHub Repo
         </a>

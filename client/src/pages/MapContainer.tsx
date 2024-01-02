@@ -12,12 +12,12 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ coordinates, setCoordinates }) => {
-  const [place, setPlace] = useState<any>(null); // Replace 'any' with the actual type of your place
-  const [places, setPlaces] = useState<any[]>([]); // Replace 'any' with the actual type
-  const [curPlaces, setCurPlaces] = useState<any[]>([]); // Replace 'any' with the actual type
-  const [bounds, setBounds] = useState<any>(null); // Replace 'any' with the actual type
+  const [place, setPlace] = useState<any>(null);
+  const [places, setPlaces] = useState<any[]>([]);
+  const [curPlaces, setCurPlaces] = useState<any[]>([]); 
+  const [bounds, setBounds] = useState<any>(null);
   const [pinHover, setPinHover] = useState<number>(-1);
-  const [searchQuery, setSearchQuery] = useState<any>(null); // Replace 'any' with the actual type
+  const [searchQuery, setSearchQuery] = useState<any>(null);
   const [lat, setLat] = useState<number>(0);
   const [lng, setLng] = useState<number>(0);
 

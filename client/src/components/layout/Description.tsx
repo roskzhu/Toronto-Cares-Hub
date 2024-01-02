@@ -6,7 +6,16 @@ const Description: React.FC = () => {
       <h1 className="text-white text-4xl font-bold leading-relaxed">
         Connecting you to Toronto's shelters effortlessly. 
         Seamlessly navigate through shelter locations, providing a beacon of hope for those in need. 
-        Your gateway to compassionate support and community empowerment.
+        Your gateway to {" "}
+        <span className="bg-gradient-to-r from-blue-500 to-green-500 text-transparent bg-clip-text text-fill-transparent">
+          compassionate support 
+        </span> 
+        {" "}
+        and 
+        {" "}
+        <span className="bg-gradient-to-r from-yellow-400 to-orange-400 text-transparent bg-clip-text text-fill-transparent">
+          community empowerment.
+        </span>
       </h1>
     </div>
   );

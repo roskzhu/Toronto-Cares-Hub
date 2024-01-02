@@ -22,7 +22,7 @@ const OrganizationsWidget: React.FC<OrganizationsWidget> = ({ setCoordinates }) 
     // Fetch data from your API endpoint
     const fetchData = async () => {
       try {
-        const response = await axios.get<Organization[]>('http://localhost:5000/api/organizations'); // Replace with your API endpoint
+        const response = await axios.get<Organization[]>('http://localhost:5000/api/organizations');
         setOrganizations(response.data);
       } catch (error: any) {
         console.error('Error fetching data:', error.message);
@@ -31,6 +31,12 @@ const OrganizationsWidget: React.FC<OrganizationsWidget> = ({ setCoordinates }) 
 
     fetchData();
   }, []);
+
+  // Function to capitalize the first character after each comma
+  const capitalizeAfterComma = (str: string) => {
+    return str.replace(/,(\s*[a-z])/g, (_, match) => `, ${match.toUpperCase()}`)
+              .replace(/(?:^|\s)([a-z])/g, (_, match) => ` ${match.toUpperCase()}`);
+  };
 
   // Function to set the selected location on the map
   const handleSetLocation = (lat: number, lng: number) => {
@@ -42,29 +48,23 @@ const OrganizationsWidget: React.FC<OrganizationsWidget> = ({ setCoordinates }) 
     <div className="text-sm">
       <ul>
         {organizations.map((org) => (
-          <li key={org._id} className="bg-white/10 mb-2 p-2 hover:bg-white/20">
-                       
-            
+          <button key={org._id} 
+                  className="bg-white/10 mb-2 p-2 hover:bg-white/20 text-left"
+                  onClick={() => handleSetLocation(org.lat, org.lng)}>
+                  
             {Object.entries(org).map(([key, value], index, array) => (
               // Skip the first(_id) and last(__v) entries
               index !== 0 && index < array.length - 3 && (
                 <React.Fragment key={key}>
-                  <span className="uppercase text-blue-400">
-                    {key.charAt(0).toUpperCase() + key.slice(1)}:
+                  <span className="text-blue-400 uppercase">
+                   {key.replace(/_/g, ' ')}:
                   </span> {" "}
                   
-                  {value} <br />
+                  {capitalizeAfterComma(value)} <br />
                 </React.Fragment>
               )
             ))}
-            
-            <button className="border p-1 mt-2 rounded-md hover:bg-white/15 px-3" 
-              onClick={() => handleSetLocation(org.lat, org.lng)}>
-              See Location
-            </button> 
-            <br/>
-
-          </li>
+          </button>
         ))}
       </ul>
     </div>

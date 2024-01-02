@@ -14,7 +14,7 @@ interface MapPinProps {
 }
 
 const MapPin: React.FC<MapPinProps> = ({ id, place, pinHover }) => {
-  const { name, location, rating } = place;
+  const { name, location } = place;
 
   const getPin = () => {
     return pin;

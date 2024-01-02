@@ -1,6 +1,5 @@
-import React , { useEffect, useState } from 'react';
+import React , { useState } from 'react';
 import '../styles/Landing.css';
-// import Wrapper from './Wrapper';
 import Home from './MapContainer';
 
 const TORONTO_COORDS = {
@@ -9,17 +8,6 @@ const TORONTO_COORDS = {
 };
 
 const Landing: React.FC = () => {
-  const [lat, setLat] = useState(0);
-  const [lng, setLng] = useState(0);
-  const [place, setPlace] = useState(null);
-  const [searchQuery, setSearchQuery] = useState(null);
-  const onLoad = (autoC : any) => setSearchQuery(autoC);
-
-  const onPlaceChanged = () => {
-    // setLat(searchQuery?.getPlace()?.geometry?.location?.lat() ?? 0);
-    // setLng(searchQuery?.getPlace()?.geometry?.location?.lng() ?? 0);
-  };
-
   const [coordinates, setCoordinates] = useState(TORONTO_COORDS);
 
   return (

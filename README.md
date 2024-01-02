@@ -1,7 +1,7 @@
 <div align="center">
     <div id="user-content-toc">
       <ul>
-          <summary><h1 style="display: inline-block; margin-bottom:0px">Homeless Shelter Navigation</h1></summary>
+          <summary><h1 style="display: inline-block; margin-bottom:0px">Toronto Cares Hub</h1></summary>
       </ul>
     </div>
     <h3>Navigating Compassion: Mapping Toronto's Shelters for a Sheltered Tomorrow</h3>

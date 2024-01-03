@@ -36,10 +36,14 @@ This web application aims to assist individuals in need by providing an interact
 - [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
 
 2. Install required dependencies in root folder and both frontend and backend folders
-```npm install```
+```
+npm install
+```
 
-3. Create a `.env` file in this folder with the following variables:
-```REACT_APP_GOOGLE_API_KEY={YOUR_API_KEY}```
+4. Create a `.env` file in this folder with the following variables:
+```
+REACT_APP_GOOGLE_API_KEY={YOUR_API_KEY}
+```
 
 ## Architecture Overview
 ![image](https://github.com/roskzhu/Toronto-Cares-Hub/assets/110139243/a80d9a20-4a42-445d-897b-c322120bab95)

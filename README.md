@@ -26,11 +26,10 @@ This web application aims to assist individuals in need by providing an interact
 
 
 ## Features
-### 1. Real-Time Data
-Access up-to-date information on shelter capacities, services provided, and food bank availability.
-### 2. Route Planning
-Enable users to plan and visualize the most efficient route to their nearest food bank or shelter.
-
+- Route Planning: Enable users to plan and visualize the most efficient route to their nearest food bank or shelter.
+- Interactive Shelter Navigation: Effortlessly navigate through Toronto's shelter locations with an intuitive map interface. Find detailed information about each shelter, including occupancy rates, services offered, and more.
+- Real-time Metrics Updates: Stay informed with real-time updates on shelter metrics. Our application provides the latest data on occupancy rates, program models, and other vital information to keep you well-informed.
+- Comprehensive Shelter Details: Access detailed information about each shelter, including organization names, addresses, hours of operation, and client group details. Make informed decisions with a comprehensive overview of each location.
 
 ## Prerequisites
 Before you begin, ensure you have met the following requirements:
@@ -43,8 +42,6 @@ to be added
 - shelter information is scraped from city of toronto shelters page, then stored in a mongo db
 - google maps api for map visualization (carousel), locations are searched with algolia
 - redis for statemanagement
-- docker/firebase?
-- more info: emergency services, foodbanks
 
 ## Getting Started
 
@@ -66,3 +63,11 @@ _(localhost:3000 by default)_
 ### Sneak Peak
 ![image](https://github.com/roskzhu/Toronto-Cares-Hub/assets/110139243/74998b2f-4199-4a6a-8bb9-1f9a56a39188)
 ![image](https://github.com/roskzhu/Toronto-Cares-Hub/assets/110139243/d1f20aa5-2477-44ac-ba5b-d419e2b6fad4)
+
+## Next Steps
+- [X] Add metrics from City of Toronto API in a carousel
+- [X] Use Google Maps API for map visualization and searching
+- [X] Set up MongoDB keys for geocoding
+- [ ] Deploy with docker
+- [ ] Add more info (i.e. emergency services, food banks)
+- [ ] Leverage Redis for caching

@@ -26,22 +26,24 @@ This web application aims to assist individuals in need by providing an interact
 
 
 ## Features
-- Route Planning: Enable users to plan and visualize the most efficient route to their nearest food bank or shelter.
-- Interactive Shelter Navigation: Effortlessly navigate through Toronto's shelter locations with an intuitive map interface. Find detailed information about each shelter, including occupancy rates, services offered, and more.
-- Real-time Metrics Updates: Stay informed with real-time updates on shelter metrics. Our application provides the latest data on occupancy rates, program models, and other vital information to keep you well-informed.
-- Comprehensive Shelter Details: Access detailed information about each shelter, including organization names, addresses, hours of operation, and client group details. Make informed decisions with a comprehensive overview of each location.
+- **Route Planning:** Enable users to plan and visualize the most efficient route to their nearest food bank or shelter.
+- **Interactive Shelter Navigation:** Effortlessly navigate through Toronto's shelter locations with an intuitive map interface. Find detailed information about each shelter, including occupancy rates, services offered, and more.
+- **Real-time Metrics Updates:** Stay informed with real-time updates on shelter metrics. Our application provides the latest data on occupancy rates, program models, and other vital information to keep you well-informed.
+- **Comprehensive Shelter Details:** Access detailed information about each shelter, including organization names, addresses, hours of operation, and client group details. Make informed decisions with a comprehensive overview of each location.
 
 ## Prerequisites
-Before you begin, ensure you have met the following requirements:
-
+1. Before you begin, ensure you have met the following requirements:
 - [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
 
+2. Install required dependencies in root folder and both frontend and backend folders
+```npm install```
+
+3. Create a `.env` file in this folder with the following variables:
+```REACT_APP_GOOGLE_API_KEY={YOUR_API_KEY}```
+
 ## Architecture Overview
-to be added
-- metrics are from city of toronto api
-- shelter information is scraped from city of toronto shelters page, then stored in a mongo db
-- google maps api for map visualization (carousel), locations are searched with algolia
-- redis for statemanagement
+![image](https://github.com/roskzhu/Toronto-Cares-Hub/assets/110139243/a80d9a20-4a42-445d-897b-c322120bab95)
+
 
 ## Getting Started
 

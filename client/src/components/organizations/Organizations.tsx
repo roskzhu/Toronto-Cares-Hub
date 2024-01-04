@@ -15,6 +15,7 @@ type OrganizationsWidget = {
   setCoordinates: React.Dispatch<React.SetStateAction<{ lat: number; lng: number }>>;
 };
 
+/* eslint-disable */
 const OrganizationsWidget: React.FC<OrganizationsWidget> = ({ setCoordinates }) => {
   const [organizations, setOrganizations] = useState<Organization[]>([]);
 

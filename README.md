@@ -40,7 +40,7 @@ This web application aims to assist individuals in need by providing an interact
 npm install
 ```
 
-4. Create a `.env` file in this folder with the following variables:
+3. Create a `.env` file in this folder with the following variables:
 ```
 REACT_APP_GOOGLE_API_KEY={YOUR_API_KEY}
 ```

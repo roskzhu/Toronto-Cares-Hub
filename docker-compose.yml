@@ -3,11 +3,15 @@ services:
   frontend:
     build:
       context: ./client
+      dockerfile: Dockerfile
+    image: us-docker.pkg.dev/cloudrun/container/torontomap:latest
     ports:
       - "3000:3000"
 
   backend:
     build:
       context: ./server
+      dockerfile: Dockerfile
+    image: us-docker.pkg.dev/cloudrun/container/torontomap:latest
     ports:
       - "5000:5000"

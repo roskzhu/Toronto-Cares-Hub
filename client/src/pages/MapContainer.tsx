@@ -1,4 +1,3 @@
-// import { useEffect, useState } from "react";
 import { useState } from "react";
 import Map from "../components/map/GoogleMap";
 import Searchbar from "../components/map/SearchBar";
@@ -15,25 +14,12 @@ interface HomeProps {
 const Home: React.FC<HomeProps> = ({ coordinates, setCoordinates }) => {
   const [setPlace] = useState<any>(null);
   const [places] = useState<any[]>([]);
-  // const [curPlaces, setCurPlaces] = useState<any[]>([]); 
   /* eslint-disable */
   const [bounds, setBounds] = useState<any>(null);
   const [pinHover, setPinHover] = useState<number>(-1);
   const [searchQuery, setSearchQuery] = useState<any>(null);
   const [lat, setLat] = useState<number>(0);
   const [lng, setLng] = useState<number>(0);
-
-  // useEffect(() => {
-    // setCurPlaces(
-    //   places.filter(
-    //     (place) =>
-    //       place.latitude >= bounds.sw.lat &&
-    //       place.latitude <= bounds.ne.lat &&
-    //       place.longitude >= bounds.sw.lng &&
-    //       place.longitude <= bounds.ne.lng
-    //   )
-    // );
-  // }, []);
 
   return (
     <div className="flex flex-col flex-1 overflow-y-auto">
